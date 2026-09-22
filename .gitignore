@@ -1,0 +1,4 @@
+/plow-credentials
+.env
+.env.*
+node_modules/
