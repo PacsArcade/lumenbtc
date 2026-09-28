@@ -30,7 +30,7 @@ OFF:
 
 The intended shape, once a real endpoint exists: draft a letter from the
 owner's brief (audience, occasion, key points), write it in the owner's
-voice as pacBOT/Lumen understands it, and save the draft to the site's own
+voice as pacBOT/LumenBTC understands it, and save the draft to the site's own
 Letters desk using a **draft-only** scoped site key, never a key that can
 send. The owner reviews and sends from their own site. Nothing here should
 be built or wired to a guessed endpoint shape before that endpoint is real;

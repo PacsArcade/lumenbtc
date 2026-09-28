@@ -16,7 +16,7 @@ echo "== check: prompt length sanity =="
 bash tests/prompt-length.sh || FAIL=1
 
 BASE_TAG="localhost/plow-openclaw-agent:7c476de"
-IMAGE_TAG="localhost/pacbot-attendant:test"
+IMAGE_TAG="localhost/lumenbtc:test"
 
 if command -v podman >/dev/null 2>&1; then
   if podman image exists "$BASE_TAG" 2>/dev/null; then

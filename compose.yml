@@ -7,7 +7,7 @@
 # (README.md:51-64 of plow-openclaw-agent for the contract).
 services:
   attendant:
-    image: localhost/pacbot-attendant:latest
+    image: localhost/lumenbtc:latest
     build:
       context: .
       args:
@@ -15,10 +15,10 @@ services:
     env_file:
       - .env
     environment:
-      # AGENT_NAME defaults to Lumen; override to keep this install's
+      # AGENT_NAME defaults to LumenBTC; override to keep this install's
       # listing neutral (the repo itself stays neutral through this var,
       # never a hardcoded name in the image).
-      AGENT_NAME: ${AGENT_NAME:-Lumen}
+      AGENT_NAME: ${AGENT_NAME:-LumenBTC}
     volumes:
       - state:/var/lib/plow:Z
     stop_grace_period: 35s

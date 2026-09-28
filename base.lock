@@ -1,4 +1,4 @@
-# Pinned base for the Lumen attendant image
+# Pinned base for the LumenBTC attendant image
 
 This repo builds `FROM` a local image tag, never a registry Plow's own
 image (none is published, README.md of plow-openclaw-agent: "No official

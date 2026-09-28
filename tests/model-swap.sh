@@ -7,7 +7,7 @@
 set -euo pipefail
 
 HERE="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
-IMAGE="${ATTENDANT_IMAGE:-localhost/pacbot-attendant:test}"
+IMAGE="${ATTENDANT_IMAGE:-localhost/lumenbtc:test}"
 
 if command -v podman >/dev/null 2>&1 && podman image exists "$IMAGE" 2>/dev/null; then
   echo "model-swap: inspecting built image $IMAGE"

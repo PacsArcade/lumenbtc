@@ -1,4 +1,4 @@
-# Lumen attendant (working repo name: pacbot-attendant)
+# LumenBTC attendant (working repo name: lumenbtc)
 
 An OpenClaw 2.0 agent that runs on Plow's phone-line infrastructure and
 answers bitcoin, nostr, shop, and event questions for a small community or
@@ -13,7 +13,9 @@ from this same text and an empty knowledge base its own owner fills in.
 
 ## What she is
 
-The persona (`prompt/lumen-attendant.md`) is Lumen: a disclosed AI who says
+LumenBTC, a disclosed AI made of light, Pac's Arcade's first hire.
+
+The persona (`prompt/lumen-attendant.md`) is LumenBTC: a disclosed AI who says
 "I'm AI" plainly and early, calls you fren, teaches bitcoin and nostr
 principles without ever giving personalized financial advice, and can tell
 the story of Degen Wonderland and the arcaders if asked. She carries the
@@ -57,7 +59,7 @@ Per OpenClaw's own docs, a shared thread with more than one person is a
 collaboration feature, not an isolation boundary. **This agent does not
 isolate hostile users** (the base image's own words, README.md:105). The
 owner is the person who deployed it; anyone else texting in is a
-participant. Lumen helps participants freely with information and
+participant. LumenBTC helps participants freely with information and
 teaching, but checks with the owner before acting on their behalf, before
 anything touching money, and before joining a participant's request to the
 owner's own resources (`prompt/lumen-attendant.md`, "Owner and
@@ -68,10 +70,10 @@ rather than quietly routing around them.
 ## Install, five commands (podman, never docker)
 
 ```sh
-git clone <this repo> && cd pacbot-attendant
+git clone <this repo> && cd lumenbtc
 ./scripts/build-base.sh                          # builds the pinned plow-openclaw-agent base (base.lock)
 cp .env.example .env && $EDITOR .env             # fill in PLOW_API_BASE + PLOW_AGENT_TOKEN (never commit this file)
-podman-compose up -d --build                     # builds localhost/pacbot-attendant:latest from this Dockerfile, then starts it
+podman-compose up -d --build                     # builds localhost/lumenbtc:latest from this Dockerfile, then starts it
 podman-compose logs -f attendant
 ```
 
