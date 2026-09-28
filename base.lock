@@ -1,0 +1,43 @@
+# Pinned base for the Lumen attendant image
+
+This repo builds `FROM` a local image tag, never a registry Plow's own
+image (none is published, README.md of plow-openclaw-agent: "No official
+image is published yet"). Build it yourself, on this pin, before building
+this repo's Dockerfile.
+
+## Pins
+
+- **plow-openclaw-agent commit:** `7c476de` (`Merge pull request #11 from
+  plow-pbc/openclaw-usage-collector`, plow-pbc/plow-openclaw-agent). No
+  LICENSE file at this commit; verified with
+  `find ~/dev/apps/plow-openclaw-agent -maxdepth 1 -iname "licen*"` (no
+  output). Nothing from this repo's source is copied into our tree; we only
+  build an image FROM a local tag produced from it.
+- **OpenClaw image, pinned by digest inside that repo's own Dockerfile**
+  (`Dockerfile:1`):
+  `ghcr.io/openclaw/openclaw:2026.9.4@sha256:cc596b846506a5f4cfcee111394a2725f375f01cca2ebb492a161fd1b747f101`
+- **Local base image tag this repo's Dockerfile expects by default:**
+  `localhost/plow-openclaw-agent:7c476de` (override with `--build-arg BASE=...`)
+
+## Build the base locally, with podman (never docker)
+
+```sh
+git -C ~/dev/apps/plow-openclaw-agent fetch --tags 2>/dev/null || true
+git -C ~/dev/apps/plow-openclaw-agent checkout 7c476de
+podman build -t localhost/plow-openclaw-agent:7c476de ~/dev/apps/plow-openclaw-agent
+```
+
+`scripts/build-base.sh` wraps exactly this (checkout + build), and checks
+the checked-out commit matches this pin before building.
+
+## Bumping this pin
+
+1. Update the commit hash above and in `scripts/build-base.sh`.
+2. Re-read `boot/config.ts` at the new commit for the two model strings this
+   repo's Dockerfile patches (`primary: "plow/z-ai/glm-5.2"`,
+   `fallbacks: ["plow/anthropic/claude-sonnet-5"]`). If they moved or
+   changed shape, `scripts/check.sh`'s model-swap test and the Dockerfile's
+   own fail-closed grep will both refuse the build, fix the Dockerfile's
+   sed pattern to match the new shape before shipping.
+3. Re-check the OpenClaw digest in the new commit's own `Dockerfile:1` and
+   update it here too, for anyone auditing what actually runs.

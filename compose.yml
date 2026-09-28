@@ -1,0 +1,25 @@
+# Our own compose file (not copied from plow-openclaw-agent/compose.yml -
+# that repo has no LICENSE). Same shape as its documented example
+# (build this repo's Dockerfile, mount a named state volume at
+# /var/lib/plow, read Plow credentials from an env file), adapted for
+# podman: SELinux label (:Z) on the volume mount, and env vars named to
+# match what boot/agent-index.ts and boot/main.ts actually read
+# (README.md:51-64 of plow-openclaw-agent for the contract).
+services:
+  attendant:
+    build:
+      context: .
+      args:
+        BASE: ${BASE_IMAGE:-localhost/plow-openclaw-agent:7c476de}
+    env_file:
+      - .env
+    environment:
+      # AGENT_NAME defaults to Lumen; override to keep this install's
+      # listing neutral (the repo itself stays neutral through this var,
+      # never a hardcoded name in the image).
+      AGENT_NAME: ${AGENT_NAME:-Lumen}
+    volumes:
+      - state:/var/lib/plow:Z
+    stop_grace_period: 35s
+volumes:
+  state:
