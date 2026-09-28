@@ -5,7 +5,7 @@ description: Draft letters to community members for the owner to review and send
 
 # Letters (drafts only, config flag OFF)
 
-The Admiral's ruling on this feature (openclaw-hackathon-plan.md:522-524):
+The house ruling on this feature (openclaw-hackathon-plan.md:522-524):
 drafts only, the attendant never sends, and it ships "behind a config flag
 that stays OFF until the endpoint exists." **That endpoint does not exist
 yet**, there is no site-side route today that accepts a draft-only scoped
