@@ -9,6 +9,10 @@
 # no Plow source, it only builds against a locally-built base image tag.
 ARG BASE=localhost/plow-openclaw-agent:7c476de
 FROM ${BASE}
+# ghcr links the package to this repo through the source label; the base image's own label pointed at openclaw.
+LABEL org.opencontainers.image.source="https://github.com/PacsArcade/lumenbtc" \
+      org.opencontainers.image.licenses="MIT" \
+      org.opencontainers.image.description="LumenBTC, a disclosed AI made of light: your bitcoin startup's first hire on OpenClaw 2.0"
 
 # The base image's final stage runs as `node` (plow-openclaw-agent/Dockerfile
 # line 44: `USER node`); /opt/plow/* was written as root during the base
