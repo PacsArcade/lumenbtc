@@ -12,7 +12,7 @@ The plan names `7b4fab3` for vendoring. This run vendored `1e5a89a8132868ee7aa7d
 instead because `7b4fab3`'s `references/CANON.md` still states Pac's
 Arcade's tax status as "501(c)(3)", which commit `e495cb3` (block 968,237,
 on the Admiral's word "ship the 501 wording") corrected to "non-profit in
-formation" — the foundation has not been formed and has not applied for
+formation": the foundation has not been formed and has not applied for
 501(c)(3) status. `git diff 7b4fab3 1e5a89a8132868ee7aa7d1c47f6e33c597ccc1f7 -- SKILL.md README.md
 ROADMAP.md` is empty (those three files are identical at both commits);
 only `references/CANON.md` and `references/voicebox-plan.md` changed, and
