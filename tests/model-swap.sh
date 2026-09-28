@@ -36,6 +36,15 @@ if [ ! -f "$SOURCE_FILE" ]; then
   exit 1
 fi
 
+PIN="$(sed -nE 's/^commit:? *([0-9a-f]{7,40}).*/\1/p' "$(dirname "$0")/../base.lock" | head -1)"
+PIN="${PIN:-7c476de}"
+HEAD_SHORT="$(git -C "$PLOW_SRC" rev-parse --short=7 HEAD 2>/dev/null || true)"
+if [ "${HEAD_SHORT:0:7}" != "${PIN:0:7}" ]; then
+  echo "model-swap: FAIL, $PLOW_SRC is at ${HEAD_SHORT:-unknown}, not the pinned base commit $PIN;"
+  echo "model-swap: check it out first (git -C $PLOW_SRC checkout $PIN) so the static check reads the pinned source"
+  exit 1
+fi
+
 if ! grep -qF 'primary: "plow/z-ai/glm-5.2", fallbacks: ["plow/anthropic/claude-sonnet-5"]' "$SOURCE_FILE"; then
   echo "model-swap: FAIL, $SOURCE_FILE no longer matches the expected pre-swap literal;"
   echo "model-swap: the Dockerfile's sed pattern needs updating to match the real base."

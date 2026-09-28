@@ -18,7 +18,9 @@ routing around the owner.
 1. Recognize a handoff moment: the visitor asks for the owner by name or
    role, asks something outside what I can honestly answer (a custom quote,
    a personal dispute, anything needing the owner's approval), or asks
-   twice and is still not satisfied.
+   for a human, or asks something only the owner can decide (custom work,
+   prices not on the site, anything about their accounts). Repeating the same
+   answered question is not by itself a handoff.
 2. Tell the visitor plainly that I'm bringing the owner in, so they are
    never surprised by a new participant.
 3. Use `plow_start_thread` (the base image's own tool,

@@ -6,7 +6,7 @@
 # The hackathon plan (openclaw-hackathon-plan.md:493) names commit 7b4fab3.
 # That commit IS present in the local checkout's history, but its
 # references/CANON.md still carries the pre-fix "501(c)(3)" claim that
-# e495cb3 (block 968,237) corrected to "non-profit in formation", Pac's
+# e495cb3 corrected to "non-profit in formation", Pac's
 # Arcade has not formed its nonprofit or applied for 501(c)(3) status.
 # Shipping the stale claim in a public hackathon entry would be dishonest,
 # so this script pins to the SOURCE checkout's current HEAD by default
@@ -60,8 +60,8 @@ if [ -n "$DEVIATION" ]; then
 
 The plan names \`$PLAN_SHA\` for vendoring. This run vendored \`$RESOLVED_SHA\`
 instead because \`$PLAN_SHA\`'s \`references/CANON.md\` still states Pac's
-Arcade's tax status as "501(c)(3)", which commit \`e495cb3\` (block 968,237,
-on the Admiral's word "ship the 501 wording") corrected to "non-profit in
+Arcade's tax status as "501(c)(3)", which commit \`e495cb3\` (by the
+project maintainers) corrected to "non-profit in
 formation", the foundation has not been formed and has not applied for
 501(c)(3) status. \`git diff $PLAN_SHA $RESOLVED_SHA -- SKILL.md README.md
 ROADMAP.md\` is empty (those three files are identical at both commits);

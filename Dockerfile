@@ -27,8 +27,9 @@ RUN printf '\n' >> /opt/plow/prompt/AGENTS.md \
 
 # Skills. The base image's rendered config sets
 # skills.load.extraDirs = ["/opt/plow/skills"] (boot/config.ts:45), so
-# anything placed there loads alongside (not instead of) the base image's
-# own owners-mac / google-workspace skills.
+# anything placed there is loaded by OpenClaw at boot. Whether the base's own
+# bundled skills also load is governed by the base's allowBundled setting on
+# the same line, which this image does not touch.
 COPY skills/ /opt/plow/skills/
 
 # Model swap: Sonnet 5 primary, GLM 5.2 fallback.

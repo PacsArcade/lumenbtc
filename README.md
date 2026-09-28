@@ -70,9 +70,8 @@ rather than quietly routing around them.
 ```sh
 git clone <this repo> && cd pacbot-attendant
 ./scripts/build-base.sh                          # builds the pinned plow-openclaw-agent base (base.lock)
-podman build -t localhost/pacbot-attendant:latest --build-arg BASE=localhost/plow-openclaw-agent:7c476de .
 cp .env.example .env && $EDITOR .env             # fill in PLOW_API_BASE + PLOW_AGENT_TOKEN (never commit this file)
-podman-compose up -d                             # or: podman compose up -d, depending on your install
+podman-compose up -d --build                     # builds localhost/pacbot-attendant:latest from this Dockerfile, then starts it
 podman-compose logs -f attendant
 ```
 

@@ -14,8 +14,16 @@ FAIL=0
 FILES="$(git ls-files 2>/dev/null || find . -type f -not -path './.git/*')"
 FILES="$(echo "$FILES" | grep -v '^tests/no-secrets.sh$' || true)"
 
-if echo "$FILES" | grep -qx '\.env'; then
-  echo "no-secrets: FAIL, .env is tracked; it must never be committed"
+if echo "$FILES" | grep -E '(^|/)\.env(\..+)?$' | grep -qv '\.env\.example$'; then
+  echo "no-secrets: FAIL, a .env file is tracked (only .env.example may be); it must never be committed"
+  FAIL=1
+fi
+
+# Generic net: any credential-looking assignment with a real-looking value (placeholders excluded)
+CRED='(token|secret|password|passwd|api[_-]?key|private[_-]?key)[A-Za-z0-9_]*[[:space:]]*[=:][[:space:]]*["'"'"']?[A-Za-z0-9_\-]{16,}'
+HITS="$(echo "$FILES" | xargs -r grep -inE "$CRED" 2>/dev/null | grep -viE 'example|replace|your[_ -]|xxx|changeme|<[^>]+>|placeholder|\$\{|\$[A-Z_]+' || true)"
+if [ -n "$HITS" ]; then
+  echo "no-secrets: FAIL, credential-shaped assignment with a real-looking value:"; echo "$HITS"
   FAIL=1
 fi
 
