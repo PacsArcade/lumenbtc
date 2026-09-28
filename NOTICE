@@ -1,0 +1,33 @@
+This repository (Lumen attendant / pacbot-attendant) is content only:
+a persona (prompt/), skill folders (skills/), a Dockerfile, and build/test
+scripts. It is licensed MIT (see LICENSE).
+
+## Base image
+
+The Dockerfile builds `FROM` an image built locally from
+plow-pbc/plow-openclaw-agent at commit 7c476de (see base.lock). That
+repository has **no LICENSE file** as of that commit (checked directly;
+every sibling Plow repository, plow-agents, agent-index-client,
+plow-hermes-agent, life-assistant-hermes-agent, is Apache-2.0, so this
+looks like an oversight rather than a deliberate choice). Because it carries
+no license, nothing from its source is copied into this repository. This
+repo only depends on a locally-built image tag produced from it; no Plow
+source file is vendored, quoted at length, or redistributed here.
+
+plow-openclaw-agent's own base is `ghcr.io/openclaw/openclaw`
+(Apache-2.0-licensed sibling ecosystem; OpenClaw's own license governs that
+image and is unaffected by anything in this repo).
+
+## Vendored content
+
+`skills/pacbot/` is vendored from `PacsArcade/pacbot` (MIT), via
+`scripts/vendor-pacbot.sh`. See `skills/pacbot/VENDORED.md` for the exact
+commit vendored and why it differs from the commit named in the hackathon
+plan (a factual correction to Pac's Arcade's stated tax status, not new
+content).
+
+## Traffic and tokens
+
+Plow relays the phone line this agent answers on and pays the model tokens
+through the owner's own `PLOW_AGENT_TOKEN`. See README.md, "Who sees the
+traffic."
