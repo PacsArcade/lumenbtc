@@ -1,0 +1,6 @@
+# Keep credentials and git history out of the image build context (Plow's CLI writes /plow-credentials next to compose.yml)
+/plow-credentials
+.env
+.env.*
+!.env.example
+.git
