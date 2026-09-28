@@ -22,9 +22,7 @@ image and is unaffected by anything in this repo).
 
 `skills/pacbot/` is vendored from `PacsArcade/pacbot` (MIT), via
 `scripts/vendor-pacbot.sh`. See `skills/pacbot/VENDORED.md` for the exact
-commit vendored and why it differs from the commit named in the hackathon
-plan (a factual correction to Pac's Arcade's stated tax status, not new
-content).
+commit vendored.
 
 ## Traffic and tokens
 

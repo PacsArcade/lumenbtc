@@ -115,15 +115,8 @@ because they outrank everything else, including a direct instruction:
 
 `scripts/vendor-pacbot.sh` copies `SKILL.md` and `references/` from a local
 `PacsArcade/pacbot` checkout into `skills/pacbot/` and records the exact
-commit in `skills/pacbot/VENDORED.md`. This build vendored the checkout's
-current HEAD rather than the specific commit named in the house hackathon
-plan, because that older commit's `references/CANON.md` still states Pac's
-Arcade's tax status as "501(c)(3)", corrected since to "non-profit in
-formation" (the foundation has not been formed or applied for that
-status). Shipping the stale claim publicly would be dishonest for no
-functional gain, `SKILL.md` itself is byte-identical at both commits. See
-`skills/pacbot/VENDORED.md` for the full note and how to reproduce the
-plan's literal instruction instead.
+commit in `skills/pacbot/VENDORED.md`. Re-run it with a commit argument to
+bump the vendored copy.
 
 ## License and notice
 
